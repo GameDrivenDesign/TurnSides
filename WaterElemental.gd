@@ -9,6 +9,12 @@ func _ready():
 	# Initialization here
 	pass
 
+func isHostileTowards(node):
+	if(node.is_in_group("FireElemental")):
+		return true
+	else:
+		return false
+
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

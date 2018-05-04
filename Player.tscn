@@ -80,7 +80,7 @@ axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
+[node name="Mesh" type="MeshInstance" parent="." index="0"]
 
 layers = 1
 material_override = null
