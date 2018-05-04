@@ -7,6 +7,8 @@ var speed = 100
 const FIRE = 1
 const WATER = 0
 const elemental_enum = ["water", "fire"]
+const FIRE_GROUP = "FireElemental"
+const WATER_GROUP = "WaterElemental"
 var current_element = "water"
 var hp
 var elemental_souls_counter = [10, 10]
@@ -30,12 +32,16 @@ func _process(delta):
 	#handles the elemental-group-changig !INCOMPELE!
 	if Input.is_action_just_pressed("ui_accept"):
 		#check if the player has enough souls
-		if current_element == elemental_enum[0] and elemental_souls_counter[1] >= switch_costs_souls:
-			current_element = elemental_enum[1]
-			elemental_souls_counter[0] -= switch_costs_souls
-		elif elemental_souls_counter[0] >= switch_costs_souls:
-			current_element = elemental_enum[0]
-			elemental_souls_counter[0] -= switch_costs_souls
+		if current_element == elemental_enum[WATER] and elemental_souls_counter[FIRE] >= switch_costs_souls:
+			current_element = elemental_enum[FIRE]
+			elemental_souls_counter[FIRE] -= switch_costs_souls
+			remove_from_group(WATER_GROUP)
+			add_to_group(FIRE_GROUP)
+		elif elemental_souls_counter[WATER] >= switch_costs_souls:
+			current_element = elemental_enum[WATER]
+			elemental_souls_counter[WATER] -= switch_costs_souls
+			remove_from_group(FIRE_GROUP)
+			add_to_group(WATER_GROUP)
 		
 		update_elemental_color()
 		#else:
