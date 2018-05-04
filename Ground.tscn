@@ -10,7 +10,7 @@ subdivide_depth = 0
 
 extents = Vector3( 64, 0.1, 64 )
 
-[node name="Ground" type="StaticBody"]
+[node name="Ground" type="StaticBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
