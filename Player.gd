@@ -3,7 +3,7 @@ extends KinematicBody
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var speed = 50
+var speed = 100
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -15,5 +15,5 @@ func _process(delta):
 #	# Update game logic here.
 	var input = Vector3(0,0,0)
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	input.z = int(Input.is_action_pressed("ui_up")) - int(Input.is_action_pressed("ui_down"))
+	input.z = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	move_and_slide(input.normalized()*speed*delta, Vector3(0,1,0))
