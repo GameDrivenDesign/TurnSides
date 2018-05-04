@@ -49,3 +49,10 @@ func _process(delta):
 
 func update_elemental_color():
 	$Mesh.get_surface_material(0).albedo_color = Color(1, 0, 0) if current_element == elemental_enum[FIRE] else Color(0, 0, 1)
+
+func take_damage(damage):
+	hp -= damage
+	if hp <= 0:
+		#TODO game over screen
+		emit_signal("player_dead")
+		print("the player died") #just for check at the moment
