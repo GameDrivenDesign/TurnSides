@@ -1,15 +1,28 @@
 extends KinematicBody
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var target
+var state
+var speed = 100
+var hp = 100
+var attackRange = 300
+
+enum elementalState{
+	passive,
+	aggressive
+}
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	state = elementalState.passive
+	set_process(true)
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	walkToTarget(delta)
+
+func walkToTarget(delta):
+	var direction = target.translation - translation
+	if(direction.length() > attackRange):
+		translation = translation + direction.normalized() * speed * delta
+	
+
+func init(tar):
+	target = tar
