@@ -5,7 +5,7 @@
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Ground.tscn" type="PackedScene" id=4]
 
-[node name="Game" type="Spatial" index="0"]
+[node name="Game" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -86,6 +86,19 @@ _sections_unfolded = [ "Light", "Transform" ]
 
 [node name="FireSpawn" type="Position3D" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34882, 0, -0.265625 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16205, 0, 9.16162 )
+
+[node name="WaterSpawn" type="Position3D" parent="." index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72333, 0, -25.7642 )
+
+[node name="FireTarget" type="Position3D" parent="." index="5"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4946, 0, -26.105 )
+
+[node name="WaterTarget" type="Position3D" parent="." index="6"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3139, 0, -7.84326 )
+_sections_unfolded = [ "Transform" ]
 
 

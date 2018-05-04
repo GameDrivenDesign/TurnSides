@@ -7,7 +7,9 @@
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="WaterElemental" type="KinematicBody" index="0"]
+[node name="WaterElemental" type="KinematicBody" groups=[
+"WaterElemental",
+]]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -28,7 +30,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597612, 0 )
 shape = SubResource( 1 )
 disabled = false
 
-[node name="Mesh" type="Spatial" parent="." index="1" instance=ExtResource( 2 )]
+[node name="Mesh" parent="." index="1" instance=ExtResource( 2 )]
 
 _sections_unfolded = [ "Transform" ]
 
