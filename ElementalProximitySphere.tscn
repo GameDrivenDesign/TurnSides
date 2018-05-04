@@ -6,7 +6,7 @@
 
 radius = 10.0
 
-[node name="ElementalProximitySphere" type="Area" index="0"]
+[node name="ElementalProximitySphere" type="Area"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
