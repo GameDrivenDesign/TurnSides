@@ -2,31 +2,32 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire_gradient.png-9774f57a1502c464b2861d5a44d12e19.stex"
+path.s3tc="res://.import/fire_gradient.png-9774f57a1502c464b2861d5a44d12e19.s3tc.stex"
+path.etc2="res://.import/fire_gradient.png-9774f57a1502c464b2861d5a44d12e19.etc2.stex"
 
 [deps]
 
 source_file="res://assets/fire_gradient.png"
 source_md5="2dd4afba9c112d68de7a8d2beb0507e3"
 
-dest_files=[ "res://.import/fire_gradient.png-9774f57a1502c464b2861d5a44d12e19.stex" ]
-dest_md5="00f9b026d4c0219bfb58cf5a4d2d3b37"
+dest_files=[ "res://.import/fire_gradient.png-9774f57a1502c464b2861d5a44d12e19.s3tc.stex", "res://.import/fire_gradient.png-9774f57a1502c464b2861d5a44d12e19.etc2.stex" ]
+dest_md5="7873584ffcd365eb3e3c2e655c35314c"
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

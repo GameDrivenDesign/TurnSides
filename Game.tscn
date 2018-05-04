@@ -16,7 +16,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="Player" index="2"]
 
-transform = Transform( 0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 5, 6.56517, 5 )
+transform = Transform( 0.707107, -0.541675, 0.454519, 0, 0.642787, 0.766044, -0.707107, -0.541675, 0.454519, 12, 20, 12 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -24,8 +24,8 @@ h_offset = 0.0
 v_offset = 0.0
 doppler_tracking = 0
 projection = 0
-current = false
-fov = 60.4365
+current = true
+fov = 40.0
 size = 1.0
 near = 0.05
 far = 100.0
@@ -48,10 +48,10 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="2"]
 
-transform = Transform( 0.920603, -0.32262, 0.220016, 0, 0.56342, 0.826171, -0.390501, -0.760575, 0.518686, 4.83962, 3.38287, -0.646072 )
+transform = Transform( 0.672506, 0.660998, -0.332891, 0.128717, 0.33848, 0.932128, 0.728812, -0.669711, 0.142548, 4.83962, 3.38287, -0.646072 )
 layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
+light_color = Color( 1, 0.899194, 0.83871, 1 )
+light_energy = 0.3
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
@@ -68,11 +68,11 @@ directional_shadow_split_1 = 0.1
 directional_shadow_split_2 = 0.2
 directional_shadow_split_3 = 0.5
 directional_shadow_blend_splits = false
-directional_shadow_normal_bias = 0.8
+directional_shadow_normal_bias = 0.2
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Light", "Shadow", "Transform" ]
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
 
 [node name="FireSpawn" type="Position3D" parent="." index="3"]
 

@@ -1,9 +1,8 @@
 extends KinematicBody
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-var speed = 100
+signal souls_changed()
+
+var speed = 600
 const FIRE = 1
 const WATER = 0
 const elemental_enum = ["water", "fire"]
@@ -20,6 +19,7 @@ func _ready():
 	set_process(true)
 	hp = 500 #initial HP from the player, can be changed later
 	update_elemental_color()
+	emit_signal("souls_changed")
 
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -44,6 +44,7 @@ func _process(delta):
 			add_to_group(WATER_GROUP)
 		
 		update_elemental_color()
+		emit_signal("souls_changed")
 		#else:
 			#TODO add message to the player that indicates that he has not enough souls to switch
 

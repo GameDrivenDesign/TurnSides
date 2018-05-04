@@ -7,10 +7,10 @@ path="res://.import/fire_elemental.dae-ac7e248a4b56f2e78a64fa9d9610bef1.scn"
 [deps]
 
 source_file="res://assets/fire_elemental.dae"
-source_md5="5a63bfc32225c1c8dc1fa4ca18e23e48"
+source_md5="cf676a7f47ade2779cc21c9b7ec58875"
 
 dest_files=[ "res://.import/fire_elemental.dae-ac7e248a4b56f2e78a64fa9d9610bef1.scn" ]
-dest_md5="5d1372c586b6aa3acd32cf76cf841306"
+dest_md5="e3e1cb9bc482031a15c3f438222da4e3"
 
 [params]
 
@@ -20,7 +20,7 @@ nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
 materials/location=1
-materials/storage=1
+materials/storage=0
 materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true

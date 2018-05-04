@@ -7,10 +7,10 @@ path="res://.import/water_elemental.dae-ee9544f1c14b00b3f3ccb46697193bf7.scn"
 [deps]
 
 source_file="res://assets/water_elemental.dae"
-source_md5="410157b46a5f466a0389df3f62fe35c5"
+source_md5="e61d7ca7fb3621287cdb94e6ce0ae5de"
 
 dest_files=[ "res://.import/water_elemental.dae-ee9544f1c14b00b3f3ccb46697193bf7.scn" ]
-dest_md5="55963999c64e4b2bc36764d98a8ac54e"
+dest_md5="12a03e3bf1f4c537e8538d82ee6fa56b"
 
 [params]
 
@@ -20,7 +20,7 @@ nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
 materials/location=1
-materials/storage=1
+materials/storage=0
 materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true

@@ -4,6 +4,8 @@ extends Spatial
 # var a = 2
 # var b = "textvar"
 
+onready var hud = $Player/Camera/CanvasLayer/hud
+
 func _ready():
 	spawnFire(Vector3(0,0,0))
 	spawnFire(Vector3(5,0,-3))
@@ -11,6 +13,9 @@ func _ready():
 	spawnWater(Vector3(0,0,0))
 	spawnWater(Vector3(3,0,-3))
 	spawnWater(Vector3(-5,0,3))
+	
+	$Player.connect("souls_changed", hud, "update_for_player", [$Player])
+	$Player/Camera.look_at_from_position(Vector3(30, 50, 30), $Player.translation, Vector3(0, 1, 0))
 
 func spawnFire(offset):
 	var fire = preload("res://FireElemental.tscn").instance()
