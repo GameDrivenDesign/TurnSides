@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Projectile.gd" type="Script" id=1]
 [ext_resource path="res://particle.png" type="Texture" id=2]
@@ -130,15 +130,7 @@ _sections_unfolded = [ "Albedo", "Flags", "Parameters", "Vertex Color" ]
 material = SubResource( 7 )
 size = Vector2( 1, 1 )
 
-[sub_resource type="SphereMesh" id=9]
-
-radius = 1.0
-height = 2.0
-radial_segments = 64
-rings = 32
-is_hemisphere = false
-
-[node name="Projectile" type="Area" index="0"]
+[node name="Projectile" type="Area"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
@@ -169,7 +161,7 @@ disabled = false
 
 [node name="Particles" type="Particles" parent="." index="1"]
 
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+transform = Transform( -2, 0, -7.78829e-07, 0, 2, 0, 7.78829e-07, 0, -2, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -196,21 +188,6 @@ process_material = SubResource( 6 )
 draw_passes = 1
 draw_pass_1 = SubResource( 8 )
 _sections_unfolded = [ "Draw Passes", "Process Material", "Transform" ]
-
-[node name="MeshInstance" type="MeshInstance" parent="." index="2"]
-
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 9 )
-skeleton = NodePath("..")
-material/0 = null
 
 [connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
 

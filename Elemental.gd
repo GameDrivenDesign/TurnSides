@@ -61,7 +61,7 @@ func attackTarget(delta):
 	#	enemyList[0].takeDamage(strength * delta)
 	if weapon_cooldown <= 0:
 		var projectile = preload("res://Projectile.tscn").instance()
-		projectile.shoot_at(translation,# + Vector3(0, 1, 0),
+		projectile.shoot_at(translation + Vector3(0, 1, 0),
 			enemyList[0].translation + Vector3(0, 1, 0),
 			my_group_name())
 		get_parent().add_child(projectile)
