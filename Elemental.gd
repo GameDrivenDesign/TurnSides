@@ -30,6 +30,9 @@ func _ready():
 func isHostileTowards(node):
 	pass
 
+func my_group_name():
+	pass
+
 func _process(delta):
 	walkToTarget(delta)
 	if(state == elementalState.aggressive):
@@ -52,10 +55,10 @@ func attackTarget(delta):
 	#if(direction.length() <= attackRange):
 	#	enemyList[0].takeDamage(strength * delta)
 	if weapon_cooldown <= 0:
-		print("HIT EM")
 		var projectile = preload("res://Projectile.tscn").instance()
-		projectile.translation = translation
-		#projectile.add_collision_exception_with(self)
+		projectile.shoot_at(translation,# + Vector3(0, 1, 0),
+			enemyList[0].translation + Vector3(0, 1, 0),
+			my_group_name())
 		get_parent().add_child(projectile)
 		weapon_cooldown = WEAPON_COOLDOWN_TIME
 
