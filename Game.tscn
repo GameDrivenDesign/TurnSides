@@ -100,7 +100,7 @@ wait_time = 10.0
 one_shot = false
 autostart = true
 
-[node name="KinematicBody" parent="." index="8" instance=ExtResource( 5 )]
+[node name="boss" parent="." index="8" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1350, 2864, 2583.98 )
 

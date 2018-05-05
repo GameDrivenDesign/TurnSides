@@ -5,6 +5,7 @@ signal hp_changed()
 signal im_dead(deadObject)
 signal turned_side()
 signal player_dead()
+signal start_endphase()
 
 var speed = 600
 const FIRE = 1
@@ -23,6 +24,7 @@ const SHIELD_POWER_UP_COSTS = 10
 const SHIELD_DURATION = 10
 const TELEPORT_POWER_UP_COSTS = 5
 const TELEPORT_RANGE = 0.5 #should be between 0-1
+var timeSinceLastHealthRecover
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -32,6 +34,7 @@ func _ready():
 	emit_signal("souls_changed")
 	emit_signal("hp_changed")
 	add_to_group(WATER_GROUP)
+	timeSinceLastHealthRecover = OS.get_unix_time()
 	$Shield.hide()
 
 func _process(delta):
@@ -45,6 +48,9 @@ func _process(delta):
 		useShieldPowerUp()
 	if Input.is_action_just_pressed("ui_power_up_teleport"):
 		useTeleportPowerUp(delta)
+	restoreHp()
+	if Input.is_action_just_pressed("ui_start_endphase"):
+		emit_signal("start_endphase")
 	
 	#handles the elemental-group-changig !INCOMPELE!
 	if Input.is_action_just_pressed("ui_accept"):
@@ -73,14 +79,15 @@ func tryChangingSide():
 
 func update_elemental_color():
 	$Mesh.get_surface_material(0).albedo_color = Color(1, 0, 0) if current_element == elemental_enum[FIRE] else Color(0, 0, 1)
-	emit_signal("souls_changed")
+	emit_signal("souls_changed") #why do the souls change?
 	emit_turn_particles()
 
 func collect_soul(type):
-	if type == 'fire':
+	#just get souls from the other type???????
+	if type == 'fire': #&& current_element == elemental_enum[WATER]:
 		elemental_souls_counter[FIRE] += 1
 		emit_signal("souls_changed")
-	else:
+	else: #current_element == elemental_enum[FIRE]:
 		elemental_souls_counter[WATER] += 1
 		emit_signal("souls_changed")
 	power += 1
@@ -127,5 +134,15 @@ func useTeleportPowerUp(delta):
 			look_at(direction.normalized() + current_pos, Vector3(0, 0, 0))
 			translate(direction.normalized() * speed * delta * TELEPORT_RANGE)
 			
+func restoreHp():
+	var currentTime = OS.get_unix_time()
+	var elapsedTime = currentTime - timeSinceLastHealthRecover
+	if elapsedTime >=1:
+		timeSinceLastHealthRecover = currentTime
+	if hp < MAX_HP:
+		hp += elapsedTime
+		if hp > MAX_HP:
+			hp = MAX_HP
+		emit_signal("hp_changed")
 		
 		
