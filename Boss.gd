@@ -7,23 +7,26 @@ var hp = 3000
 var projectileCooldown = 2
 var switchShieldCooldown = 0
 var player
+var activated = false
 
 func _ready():
 	#print($BossShield.get_surface_material(0))#.albedo_color = Color(1, 1, 1)
+	set_process(true)
 	pass
 
 func _process(delta):
-	if(cooldown > 0): cooldown -= delta
-	if(cooldown <= 0): fireProjectile()
-	switchShieldCooldown -= delta
-	if(switchShieldCooldown <= 0): switchShield()
+	if(activated):
+		projectileCooldown -= delta
+		if(projectileCooldown <= 0): fireProjectile()
+		switchShieldCooldown -= delta
+		if(switchShieldCooldown <= 0): switchShield()
 	
 func startBossfight(playerNode):
 	#destroy white shield
 	player = playerNode
 	self.add_to_group("WaterElemental")
 	updateShieldColor()
-	set_process(true)
+	activated = true
 	
 func fireProjectile():
 	#substitute projectile by huge projectile
