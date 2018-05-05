@@ -1,16 +1,18 @@
 extends KinematicBody
 
+signal victory()
+
 const PROJECTILE_COOLDOWN_TIME = 5
 const SWITCH_SHIELD_COOLDOWN_TIME = 15
 
-var hp = 3000
+var hp = 3
 var projectileCooldown = 2
 var switchShieldCooldown = 0
 var player
 var activated = false
 
 func _ready():
-	#print($BossShield.get_surface_material(0))#.albedo_color = Color(1, 1, 1)
+	#$BossShield.get_surface_material(0)).albedo_color = Color(1, 1, 1)
 	set_process(true)
 	pass
 
@@ -21,13 +23,21 @@ func _process(delta):
 		switchShieldCooldown -= delta
 		if(switchShieldCooldown <= 0): switchShield()
 	
-func startBossfight(playerNode):
+func init(playerNode):
+	player = playerNode
+	
+func startBossfight():
 	#destroy white shield
 	if(not activated):
-		player = playerNode
 		self.add_to_group("WaterElemental")
 		updateShieldColor()
 		activated = true
+		
+func takeDamage(dmg):
+	hp -= dmg
+	if(hp <= 0):
+		emit_signal("victory")
+		queue_free()
 	
 func shotProjectile():
 	#substitute projectile by huge projectile

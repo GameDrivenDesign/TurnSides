@@ -10,6 +10,8 @@ onready var hud = $Player/Camera/CanvasLayer/hud
 func _ready():
 	var boss = preload("res://Boss.tscn").instance()
 	boss.translation = Vector3(10,0,10)
+	boss.init($Player)
+	$Player.connect("start_endphase", boss, "startBossfight")
 	add_child(boss)
 	$Player.connect("souls_changed", hud, "update_for_player", [$Player])
 	$Player.connect("hp_changed", hud, "update_for_player", [$Player])
