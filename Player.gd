@@ -15,9 +15,12 @@ const WATER_GROUP = "WaterElemental"
 var current_element = "water"
 const MAX_HP = 500
 var hp = MAX_HP
-var power = 0
+var power = 30 #TODO change later
+var shield_is_active = false
 var elemental_souls_counter = [10, 10]
 const switch_costs_souls = 5 #change for editing the soul costs when switching
+const SHIELD_POWER_UP_COSTS = 5
+const SHIELD_DURATION = 10
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -27,6 +30,7 @@ func _ready():
 	emit_signal("souls_changed")
 	emit_signal("hp_changed")
 	add_to_group(WATER_GROUP)
+	$Shield.hide()
 
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -35,6 +39,8 @@ func _process(delta):
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.z = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	move_and_slide(input.normalized() * speed * delta, Vector3(0,1,0))
+	if Input.is_action_just_pressed("ui_power_up_shield"):
+		useShieldPowerUp();
 	
 	#handles the elemental-group-changig !INCOMPELE!
 	if Input.is_action_just_pressed("ui_accept"):
@@ -67,15 +73,29 @@ func update_elemental_color():
 	emit_turn_particles()
 
 func takeDamage(damage):
-	hp -= damage
-	emit_signal("hp_changed")
-	if hp <= 0:
-		#TODO game over screen
-		emit_signal("im_dead", self)
-		emit_signal("player_dead")
+	if not shield_is_active:
+		hp -= damage
+		emit_signal("hp_changed")
+		if hp <= 0:
+			emit_signal("im_dead", self)
+			emit_signal("player_dead")
 	
 func emit_turn_particles():
 	var particles = preload("res://turn_particles.tscn").instance()
 	add_child(particles)
 	yield(get_tree().create_timer(1), "timeout")
 	particles.queue_free()
+	
+func useShieldPowerUp():
+	if not shield_is_active && power >= SHIELD_POWER_UP_COSTS:
+		power -= SHIELD_POWER_UP_COSTS
+		print(power)
+		shield_is_active = true
+		$Shield.show()
+		yield(get_tree().create_timer(SHIELD_DURATION), "timeout")
+		shield_is_active = false
+		$Shield.hide()
+		
+		
+		
+		
