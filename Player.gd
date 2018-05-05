@@ -73,14 +73,15 @@ func tryChangingSide():
 
 func update_elemental_color():
 	$Mesh.get_surface_material(0).albedo_color = Color(1, 0, 0) if current_element == elemental_enum[FIRE] else Color(0, 0, 1)
-	emit_signal("souls_changed")
+	emit_signal("souls_changed") #why do the souls change?
 	emit_turn_particles()
 
 func collect_soul(type):
-	if type == 'fire':
+	#just get souls from the other type???????
+	if type == 'fire': #&& current_element == elemental_enum[WATER]:
 		elemental_souls_counter[FIRE] += 1
 		emit_signal("souls_changed")
-	else:
+	else: #current_element == elemental_enum[FIRE]:
 		elemental_souls_counter[WATER] += 1
 		emit_signal("souls_changed")
 	power += 1

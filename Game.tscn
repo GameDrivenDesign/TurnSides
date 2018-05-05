@@ -100,7 +100,7 @@ wait_time = 10.0
 one_shot = false
 autostart = true
 
-[node name="boss" type="Spatial" parent="." index="8" instance=ExtResource( 5 )]
+[node name="boss" parent="." index="8" instance=ExtResource( 5 )]
 
 transform = Transform( 0.931397, 0, -1.1758, 0, 1.5, 0, 1.1758, 0, 0.931397, 31.3439, -1.12858, -21.5064 )
 _sections_unfolded = [ "Transform" ]
