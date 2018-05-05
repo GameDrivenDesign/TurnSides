@@ -77,7 +77,7 @@ func walkToTarget(delta):
 			direction = passiveTarget - translation
 	if(state == elementalState.aggressive):
 		direction = enemyList[0].translation - translation
-	if(direction.length() > attackRange/2):
+	if(direction.length() > attackRange/4):
 		translation = translation + direction.normalized() * speed * delta
 	else:
 		if(state == elementalState.passive):
