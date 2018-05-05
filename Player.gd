@@ -37,19 +37,20 @@ func _process(delta):
 			elemental_souls_counter[FIRE] -= switch_costs_souls
 			remove_from_group(WATER_GROUP)
 			add_to_group(FIRE_GROUP)
+			update_elemental_color()
 		elif elemental_souls_counter[WATER] >= switch_costs_souls:
 			current_element = elemental_enum[WATER]
 			elemental_souls_counter[WATER] -= switch_costs_souls
 			remove_from_group(FIRE_GROUP)
 			add_to_group(WATER_GROUP)
-		
-		update_elemental_color()
-		emit_signal("souls_changed")
+			update_elemental_color()
 		#else:
 			#TODO add message to the player that indicates that he has not enough souls to switch
 
 func update_elemental_color():
 	$Mesh.get_surface_material(0).albedo_color = Color(1, 0, 0) if current_element == elemental_enum[FIRE] else Color(0, 0, 1)
+	emit_signal("souls_changed")
+	emit_turn_particles()
 
 func take_damage(damage):
 	hp -= damage
@@ -57,3 +58,9 @@ func take_damage(damage):
 		#TODO game over screen
 		emit_signal("player_dead")
 		print("the player died") #just for check at the moment
+
+func emit_turn_particles():
+	var particles = preload("res://turn_particles.tscn").instance()
+	add_child(particles)
+	yield(get_tree().create_timer(1), "timeout")
+	particles.queue_free()
