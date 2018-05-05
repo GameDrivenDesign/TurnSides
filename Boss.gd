@@ -1,9 +1,11 @@
 extends KinematicBody
 
-const COOLDOWN_TIME = 5
+const PROJECTILE_COOLDOWN_TIME = 5
+const SWITCH_SHIELD_COOLDOWN_TIME = 15
 
 var hp = 3000
-var cooldown = 0
+var projectileCooldown = 2
+var switchShieldCooldown = 0
 var player
 
 func _ready():
@@ -11,7 +13,10 @@ func _ready():
 	pass
 
 func _process(delta):
-	if cooldown > 0: cooldown -= delta
+	if(cooldown > 0): cooldown -= delta
+	if(cooldown <= 0): fireProjectile()
+	switchShieldCooldown -= delta
+	if(switchShieldCooldown <= 0): switchShield()
 	
 func startBossfight(playerNode):
 	#destroy white shield
@@ -20,13 +25,14 @@ func startBossfight(playerNode):
 	updateShieldColor()
 	set_process(true)
 	
-func lookAtPlayer():
-	#rotate accordingly
-	pass
-	
 func fireProjectile():
-	#fire huge projectile at player
-	pass
+	#substitute projectile by huge projectile
+	var projectile = preload("res://Projectile.tscn").instance()
+	projectile.shoot_at(translation + Vector3(0, 1, 0),
+		player.translation + Vector3(0, 1, 0),
+		"WaterElemental")
+	get_parent().add_child(projectile)
+	projectileCooldown = PROJECTILE_COOLDOWN_TIME
 
 func switchShield():
 	if(self.is_in_group("WaterElemental")):
@@ -36,6 +42,7 @@ func switchShield():
 		self.add_to_group("WaterElemental")
 		self.remove_from_group("FireElemental")
 	updateShieldColor()
+	switchShieldCooldown = SWITCH_SHIELD_COOLDOWN_TIME
 	
 func updateShieldColor():
 	#if(self.is_in_group("WaterElemental")):
