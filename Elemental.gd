@@ -39,7 +39,6 @@ func _ready():
 	add_child(proximitySphere)
 	set_process(true)
 	
-<<<<<<< HEAD
 func setRandomPassiveTarget():
 	var posX
 	var posZ
@@ -48,10 +47,9 @@ func setRandomPassiveTarget():
 	groupSeed = rand_seed(groupSeed)[1]
 	posZ = (groupSeed % int(maxRand.y - minRand.y)) + minRand.y
 	passiveTarget = Vector3(posX, self.translation.y, posZ)
-=======
+	
 	for body in proximitySphere.get_overlapping_bodies():
 		handleProximityAlert(body)
->>>>>>> 78e7137c9ce739cc458c60f800029ffa0f8c970b
 	
 func isHostileTowards(node):
 	pass
