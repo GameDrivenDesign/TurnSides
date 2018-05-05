@@ -8,9 +8,8 @@ var damage = 100
 var penetrationPower = 3
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	yield(get_tree().create_timer(10), "timeout")
+	queue_free()
 
 func _physics_process(delta):
 	translate(delta * Vector3(0, 0, -SPEED))

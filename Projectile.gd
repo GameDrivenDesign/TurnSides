@@ -5,12 +5,13 @@ extends Area
 # var b = "textvar"
 const FIRE_GROUP = "FireElemental"
 const WATER_GROUP = "WaterElemental"
-const SPEED = 10
+const SPEED = 20
 var damage = 20
 var my_group
 
 func _ready():
-	pass
+	yield(get_tree().create_timer(10), "timeout")
+	queue_free()
 
 func _physics_process(delta):
   translate(delta * Vector3(0, 0, -SPEED))

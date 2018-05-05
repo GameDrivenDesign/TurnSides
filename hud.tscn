@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://hud.gd" type="Script" id=1]
 [ext_resource path="res://assets/fire_icon.png" type="Texture" id=2]
-[ext_resource path="res://assets/water_icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/power_icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/water_icon.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -95,7 +96,31 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="water_count" type="Label" parent="elemental_stats" index="1"]
+[node name="power_count" type="Label" parent="elemental_stats" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 166.0
+margin_top = 111.0
+margin_right = 206.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+text = "10"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="water_count" type="Label" parent="elemental_stats" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -119,15 +144,20 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="fire_icon" type="Sprite" parent="elemental_stats" index="2"]
+[node name="fire_icon" type="Sprite" parent="elemental_stats" index="3"]
 
 position = Vector2( 111.402, 70.8753 )
 texture = ExtResource( 2 )
 
-[node name="water_icon" type="Sprite" parent="elemental_stats" index="3"]
+[node name="power_icon" type="Sprite" parent="elemental_stats" index="4"]
+
+position = Vector2( 189.256, 70.8753 )
+texture = ExtResource( 3 )
+
+[node name="water_icon" type="Sprite" parent="elemental_stats" index="5"]
 
 position = Vector2( 26.565, 76.3501 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="GameOverScreen" type="ColorRect" parent="." index="1"]
 

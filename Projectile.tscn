@@ -12,7 +12,7 @@ radius = 1.0
 offsets = PoolRealArray( 0, 0.522059, 0.996324 )
 colors = PoolColorArray( 0.0259399, 0.131159, 0.332031, 1, 0.0300293, 0.0472527, 0.1875, 1, 0.0324936, 0.00292969, 0.125, 1 )
 
-[sub_resource type="GradientTexture" id=9]
+[sub_resource type="GradientTexture" id=3]
 
 flags = 4
 gradient = SubResource( 2 )
@@ -25,7 +25,7 @@ max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0.00690335, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.532227 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
+[sub_resource type="CurveTexture" id=5]
 
 flags = 4
 width = 2048
@@ -59,8 +59,8 @@ angle = 0.0
 angle_random = 0.0
 scale = 0.6
 scale_random = 0.2
-scale_curve = SubResource( 10 )
-color_ramp = SubResource( 9 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -188,7 +188,7 @@ draw_order = 0
 process_material = SubResource( 6 )
 draw_passes = 1
 draw_pass_1 = SubResource( 8 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Transform" ]
+_sections_unfolded = [ "Draw Passes", "Drawing", "Process Material", "Transform" ]
 
 [connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
 

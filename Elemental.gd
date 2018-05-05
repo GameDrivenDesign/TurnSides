@@ -2,7 +2,7 @@ extends KinematicBody
 
 signal im_dead(deadObject)
 
-const WEAPON_COOLDOWN_TIME = 0.6
+const WEAPON_COOLDOWN_TIME = 0.7
 
 var minRand
 var maxRand

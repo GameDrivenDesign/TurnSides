@@ -20,8 +20,7 @@ func set_elemental_counts(fire, water, power, hp, maxHp):
 	$elemental_stats/water_count.text = str(water)
 	$elemental_stats/fire_count.text = str(fire)
 	updateHealthBar(hp, maxHp)
-	#power does not exists jet => error
-	#$elemental_stats/power_count.text = str(power)
+	$elemental_stats/power_count.text = str(power)
 
 func update_for_player(player):
 	if not game_is_over:
