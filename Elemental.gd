@@ -57,6 +57,9 @@ func isHostileTowards(node):
 func my_group_name():
 	pass
 
+func my_element_name():
+	pass
+
 func _process(delta):
 	walkToTarget(delta)
 	if(state == elementalState.aggressive):

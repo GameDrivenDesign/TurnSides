@@ -18,6 +18,9 @@ func isHostileTowards(node):
 func my_group_name():
 	return "FireElemental"
 
+func my_element_name():
+	return "fire"
+
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
