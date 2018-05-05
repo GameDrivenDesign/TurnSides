@@ -13,6 +13,7 @@ const FIRE_GROUP = "FireElemental"
 const WATER_GROUP = "WaterElemental"
 var current_element = "water"
 var hp
+const MAX_HP = 500
 var elemental_souls_counter = [10, 10]
 const switch_costs_souls = 5 #change for editing the soul costs when switching
 
@@ -20,7 +21,7 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	set_process(true)
-	hp = 500 #initial HP from the player, can be changed later
+	hp = MAX_HP #initial HP from the player, can be changed later
 	update_elemental_color()
 	emit_signal("souls_changed")
 	emit_signal("hp_changed")

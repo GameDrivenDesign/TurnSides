@@ -22,7 +22,9 @@ func _ready():
 	
 	$Player.connect("souls_changed", hud, "update_for_player", [$Player])
 	$Player.connect("hp_changed", hud, "update_for_player", [$Player])
+	$Player.connect("player_dead", hud, "showGameOverScreen")
 	$Player/Camera.look_at_from_position(Vector3(5, 50, 30), $Player.translation, Vector3(0, 1, 0))
+	$hud.updateHealthBar() #to fix the healthBar position
 
 func spawnFire(offset):
 	var fire = preload("res://FireElemental.tscn").instance()
