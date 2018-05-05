@@ -22,6 +22,7 @@ func _ready():
 
 func _process(delta):
 	if(activated):
+		look_at_from_position(translation, player.translation, Vector3(0, 1, 0))
 		projectileCooldown -= delta
 		if(projectileCooldown <= 0): shotProjectile()
 		switchShieldCooldown -= delta
