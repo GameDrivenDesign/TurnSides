@@ -13,15 +13,23 @@ func _ready():
 func set_elemental_counts(fire, water, power, hp):
 	$elemental_stats/water_count.text = str(water)
 	$elemental_stats/fire_count.text = str(fire)
+	updateHealthBar()
 	$elemental_stats/power_count.text = str(power)
-	#$elemental_stats/hp.text = str(hp)
 
 func update_for_player(player):
 	set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0], player.power, player.hp)
 	
-func showGameOverScreen(score):
+func showGameOverScreen():
 	$GameOverScreen.show()
 	var x = $hud.get_viewport().size.x
 	var y = $hud.get_viewport().size.y
-	set_rect(Vector2(x * 0.05, y * 0.05))
-	rect_size(Vector2(x * 0.9, y * 0.9))
+	$GameOverScreen.set_rect(Vector2(x * 0.05, y * 0.05))
+	$GameOverScreen.rect_size(Vector2(x * 0.9, y * 0.9))
+	
+	
+func updateHealthBar():
+	var x = $hud.get_viewport().size.x
+	var y = $hud.get_viewport().size.y
+	$HealthBar.set_rect(Vector2(x * 0,05, y * 0,05))
+	$HealthBar.rect_size(Vector2(x * 0.45 * $Player.hp / $Player.MAX_HP))
+	
