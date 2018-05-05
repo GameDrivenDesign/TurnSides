@@ -5,7 +5,7 @@
 [ext_resource path="res://hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Ground.tscn" type="PackedScene" id=4]
 
-[node name="Game" type="Spatial"]
+[node name="Game" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
@@ -76,7 +76,8 @@ _sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
 
 [node name="FireSpawn" type="Position3D" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16205, 0, 9.16162 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0229, 0, 21.9985 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="WaterSpawn" type="Position3D" parent="." index="4"]
 
@@ -90,5 +91,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4946, 0, -26.105 )
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3139, 0, -7.84326 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="SpawnTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 
 
