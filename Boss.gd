@@ -17,23 +17,22 @@ func _ready():
 func _process(delta):
 	if(activated):
 		projectileCooldown -= delta
-		if(projectileCooldown <= 0): fireProjectile()
+		if(projectileCooldown <= 0): shotProjectile()
 		switchShieldCooldown -= delta
 		if(switchShieldCooldown <= 0): switchShield()
 	
 func startBossfight(playerNode):
 	#destroy white shield
-	player = playerNode
-	self.add_to_group("WaterElemental")
-	updateShieldColor()
-	activated = true
+	if(not activated):
+		player = playerNode
+		self.add_to_group("WaterElemental")
+		updateShieldColor()
+		activated = true
 	
-func fireProjectile():
+func shotProjectile():
 	#substitute projectile by huge projectile
-	var projectile = preload("res://Projectile.tscn").instance()
-	projectile.shoot_at(translation + Vector3(0, 1, 0),
-		player.translation + Vector3(0, 1, 0),
-		"WaterElemental")
+	var projectile = preload("res://BossProjectile.tscn").instance()
+	projectile.shoot_at(translation + Vector3(0, 1, 0), player.translation + Vector3(0, 1, 0))
 	get_parent().add_child(projectile)
 	projectileCooldown = PROJECTILE_COOLDOWN_TIME
 
