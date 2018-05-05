@@ -1,7 +1,9 @@
 extends KinematicBody
 
 signal souls_changed()
+signal hp_changed()
 signal im_dead(deadObject)
+signal turned_side()
 
 var speed = 600
 const FIRE = 1
@@ -21,6 +23,7 @@ func _ready():
 	hp = 500 #initial HP from the player, can be changed later
 	update_elemental_color()
 	emit_signal("souls_changed")
+	emit_signal("hp_changed")
 
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -32,21 +35,28 @@ func _process(delta):
 	
 	#handles the elemental-group-changig !INCOMPELE!
 	if Input.is_action_just_pressed("ui_accept"):
-		#check if the player has enough souls
-		if current_element == elemental_enum[WATER] and elemental_souls_counter[FIRE] >= switch_costs_souls:
-			current_element = elemental_enum[FIRE]
-			elemental_souls_counter[FIRE] -= switch_costs_souls
-			remove_from_group(WATER_GROUP)
-			add_to_group(FIRE_GROUP)
-			update_elemental_color()
-		elif elemental_souls_counter[WATER] >= switch_costs_souls:
-			current_element = elemental_enum[WATER]
-			elemental_souls_counter[WATER] -= switch_costs_souls
-			remove_from_group(FIRE_GROUP)
-			add_to_group(WATER_GROUP)
-			update_elemental_color()
-		#else:
-			#TODO add message to the player that indicates that he has not enough souls to switch
+		tryChangingSide()
+
+func tryChangingSide():
+	#check if the player has enough souls
+	if current_element == elemental_enum[WATER] and elemental_souls_counter[FIRE] >= switch_costs_souls:
+		current_element = elemental_enum[FIRE]
+		elemental_souls_counter[FIRE] -= switch_costs_souls
+		remove_from_group(WATER_GROUP)
+		add_to_group(FIRE_GROUP)
+		update_elemental_color()
+		yield(get_tree().create_timer(3), "timeout")
+		emit_signal("turned_side")
+	elif elemental_souls_counter[WATER] >= switch_costs_souls:
+		current_element = elemental_enum[WATER]
+		elemental_souls_counter[WATER] -= switch_costs_souls
+		remove_from_group(FIRE_GROUP)
+		add_to_group(WATER_GROUP)
+		update_elemental_color()
+		yield(get_tree().create_timer(3), "timeout")
+		emit_signal("turned_side")
+	#else:
+		#TODO add message to the player that indicates that he has not enough souls to switch
 
 func update_elemental_color():
 	$Mesh.get_surface_material(0).albedo_color = Color(1, 0, 0) if current_element == elemental_enum[FIRE] else Color(0, 0, 1)
@@ -55,6 +65,7 @@ func update_elemental_color():
 
 func takeDamage(damage):
 	hp -= damage
+	emit_signal("hp_changed")
 	if hp <= 0:
 		#TODO game over screen
 		emit_signal("im_dead", self)

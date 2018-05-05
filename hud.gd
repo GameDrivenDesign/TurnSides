@@ -9,9 +9,10 @@ func _ready():
 	# Initialization here
 	pass
 
-func set_elemental_counts(fire, water):
+func set_elemental_counts(fire, water, hp):
 	$elemental_stats/water_count.text = str(water)
 	$elemental_stats/fire_count.text = str(fire)
+	$elemental_stats/hp.text = str(hp)
 
 func update_for_player(player):
-	set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0])
+	set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0], player.hp)
