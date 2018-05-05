@@ -12,7 +12,7 @@ var player
 var activated = false
 
 func _ready():
-	#$BossShield.get_surface_material(0)).albedo_color = Color(1, 1, 1)
+	$BossShield.mesh.material.albedo_color = Color(1, 1, 1, 0.3)
 	set_process(true)
 	pass
 
@@ -57,7 +57,7 @@ func switchShield():
 	switchShieldCooldown = SWITCH_SHIELD_COOLDOWN_TIME
 	
 func updateShieldColor():
-	#if(self.is_in_group("WaterElemental")):
-	#	$MeshInstance.get_surface_material(0).albedo_color = Color(0, 0, 1, 0.5)
-	#if(self.is_in_group("FireElemental")):
-	#	$MeshInstance.get_surface_material(0).albedo_color = Color(1, 0, 0, 0.5)
+	if(self.is_in_group("WaterElemental")):
+		$BossShield.mesh.material.albedo_color = Color(0, 0, 1, 0.3)
+	if(self.is_in_group("FireElemental")):
+		$BossShield.mesh.material.albedo_color = Color(1, 0, 0, 0.3)
