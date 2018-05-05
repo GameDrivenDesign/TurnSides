@@ -7,7 +7,7 @@ path="res://.import/boss.dae-9963311d2a4782f78e8d1e92c4180a17.scn"
 [deps]
 
 source_file="res://assets/boss.dae"
-source_md5="e36bcb72a298381d083ccefd86ea5990"
+source_md5="a0cc52d36cd072e5033178cfbf1c10b9"
 
 dest_files=[ "res://.import/boss.dae-9963311d2a4782f78e8d1e92c4180a17.scn" ]
 dest_md5="aacdb99c8875b4c527d152046727971a"

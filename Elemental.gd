@@ -105,7 +105,7 @@ func handleProximityAlert(intruder):
 	if(intruder.is_in_group("player")):
 		player = intruder
 		player.connect("turned_side", self, "playerChangedSide")
-	if(isHostileTowards(intruder)):
+	if(isHostileTowards(intruder) and not intruder.is_in_group("BigBoss")):
 		intruder.connect("im_dead", self, "unregisterElemental")
 		enemyList.append(intruder)
 		if(state == elementalState.passive):
