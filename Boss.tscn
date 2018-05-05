@@ -68,7 +68,7 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[node name="KinematicBody" type="KinematicBody" index="0" groups=[
+[node name="KinematicBody" type="KinematicBody" groups=[
 "BigBoss",
 ]]
 
