@@ -1,5 +1,7 @@
 extends KinematicBody
 
+
+
 const PROJECTILE_COOLDOWN_TIME = 5
 const SWITCH_SHIELD_COOLDOWN_TIME = 15
 
@@ -12,6 +14,7 @@ var activated = false
 func _ready():
 	#print($BossShield.get_surface_material(0))#.albedo_color = Color(1, 1, 1)
 	set_process(true)
+	$BossShield.show()
 	pass
 
 func _process(delta):
