@@ -1,8 +1,6 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+const MAX_COLLECT_SOUL_DISTANCE = 80
 
 onready var hud = $Player/Camera/CanvasLayer/hud
 
@@ -29,13 +27,22 @@ func spawnFire(offset):
 	var fire = preload("res://FireElemental.tscn").instance()
 	fire.translation = $FireSpawn.translation + offset
 	fire.passiveTarget = $FireTarget
+	fire.connect("imdead", self, "checkCollectSoul", [fire])
 	add_child(fire)
 
 func spawnWater(offset):
 	var water = preload("res://WaterElemental.tscn").instance()
 	water.translation = $WaterSpawn.translation + offset
 	water.passiveTarget = $WaterTarget
+	water.connect("imdead", self, "checkCollectSoul", [water])
 	add_child(water)
+
+func checkCollectSoul(elemental):
+	var soul = preload("res://Soul.tscn").instance()
+	if elemental.translation.distance_to($Player.translation) <= MAX_COLLECT_SOUL_DISTANCE:
+		soul.target = $Player
+	soul.translation = elemental.translation
+	add_child(soul)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
