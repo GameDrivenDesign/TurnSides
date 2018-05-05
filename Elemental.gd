@@ -2,6 +2,9 @@ extends KinematicBody
 
 signal im_dead(deadObject)
 
+const WEAPON_COOLDOWN_TIME = 300
+
+var weapon_cooldown = 0
 var passiveTarget
 var enemyList = []
 var state
@@ -33,6 +36,9 @@ func _process(delta):
 	walkToTarget(delta)
 	if(state == elementalState.aggressive):
 		attackTarget(delta)
+	
+	if weapon_cooldown > 0:
+		weapon_cooldown -= delta
 
 func walkToTarget(delta):
 	var direction
@@ -47,9 +53,16 @@ func walkToTarget(delta):
 		translation = translation + direction.normalized() * speed * delta
 		
 func attackTarget(delta):
-	var direction = enemyList[0].translation - translation
-	if(direction.length() <= attackRange):
-		enemyList[0].takeDamage(strength * delta)
+	#var direction = enemyList[0].translation - translation
+	#if(direction.length() <= attackRange):
+	#	enemyList[0].takeDamage(strength * delta)
+	if weapon_cooldown <= 0:
+		print("HIT EM")
+		var projectile = preload("res://Projectile.tscn").instance()
+		projectile.translation = translation
+		#projectile.add_collision_exception_with(self)
+		get_parent().add_child(projectile)
+		weapon_cooldown = WEAPON_COOLDOWN_TIME
 
 func takeDamage(dmg):
 	hp = hp - dmg

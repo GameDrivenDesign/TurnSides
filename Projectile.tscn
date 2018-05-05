@@ -7,31 +7,31 @@
 
 radius = 1.0
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=2]
 
 offsets = PoolRealArray( 0, 0.522059, 0.996324 )
 colors = PoolColorArray( 0.332031, 0.0259399, 0.0259399, 1, 0.1875, 0.151823, 0.0300293, 1, 0.125, 0.0601501, 0.00292969, 1 )
 
-[sub_resource type="GradientTexture" id=6]
+[sub_resource type="GradientTexture" id=3]
 
 flags = 4
-gradient = SubResource( 5 )
+gradient = SubResource( 2 )
 width = 2048
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=4]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0.00690335, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.532227 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=8]
+[sub_resource type="CurveTexture" id=5]
 
 flags = 4
 width = 2048
-curve = SubResource( 7 )
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=6]
 
 render_priority = 0
 trail_divisor = 1
@@ -58,8 +58,8 @@ angle = 0.0
 angle_random = 0.0
 scale = 0.6
 scale_random = 0.2
-scale_curve = SubResource( 8 )
-color_ramp = SubResource( 6 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -69,7 +69,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Hue Variation", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Spread" ]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=7]
 
 render_priority = 0
 flags_transparent = true
@@ -125,9 +125,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Flags", "Parameters", "Vertex Color" ]
 
-[sub_resource type="QuadMesh" id=4]
+[sub_resource type="QuadMesh" id=8]
 
-material = SubResource( 3 )
+material = SubResource( 7 )
 size = Vector2( 1, 1 )
 
 [node name="Projectile" type="Area" index="0"]
@@ -161,6 +161,7 @@ disabled = false
 
 [node name="Particles" type="Particles" parent="." index="1"]
 
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -183,10 +184,10 @@ fract_delta = true
 visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 2 )
+process_material = SubResource( 6 )
 draw_passes = 1
-draw_pass_1 = SubResource( 4 )
-_sections_unfolded = [ "Draw Passes", "Process Material" ]
+draw_pass_1 = SubResource( 8 )
+_sections_unfolded = [ "Draw Passes", "Process Material", "Transform" ]
 
 [connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
 
