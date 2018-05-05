@@ -1,18 +1,21 @@
 extends KinematicBody
 
 
+signal victory()
+signal boss_hp_changed()
 
 const PROJECTILE_COOLDOWN_TIME = 5
 const SWITCH_SHIELD_COOLDOWN_TIME = 15
+const MAX_HP = 200
 
-var hp = 3000
+var hp = MAX_HP
 var projectileCooldown = 2
 var switchShieldCooldown = 0
 var player
 var activated = false
 
 func _ready():
-	#print($BossShield.get_surface_material(0))#.albedo_color = Color(1, 1, 1)
+	#$BossShield.get_surface_material(0)).albedo_color = Color(1, 1, 1)
 	set_process(true)
 	$BossShield.show()
 	pass
@@ -20,23 +23,31 @@ func _ready():
 func _process(delta):
 	if(activated):
 		projectileCooldown -= delta
-		if(projectileCooldown <= 0): fireProjectile()
+		if(projectileCooldown <= 0): shotProjectile()
 		switchShieldCooldown -= delta
 		if(switchShieldCooldown <= 0): switchShield()
 	
-func startBossfight(playerNode):
-	#destroy white shield
+func init(playerNode):
 	player = playerNode
-	self.add_to_group("WaterElemental")
-	updateShieldColor()
-	activated = true
 	
-func fireProjectile():
+func startBossfight():
+	#destroy white shield
+	if(not activated):
+		self.add_to_group("WaterElemental")
+		updateShieldColor()
+		activated = true
+		
+func takeDamage(dmg):
+	hp -= dmg
+	emit_signal("boss_hp_changed")
+	if(hp <= 0):
+		emit_signal("victory")
+		queue_free()
+	
+func shotProjectile():
 	#substitute projectile by huge projectile
-	var projectile = preload("res://Projectile.tscn").instance()
-	projectile.shoot_at(translation + Vector3(0, 1, 0),
-		player.translation + Vector3(0, 1, 0),
-		"WaterElemental")
+	var projectile = preload("res://BossProjectile.tscn").instance()
+	projectile.shoot_at(translation + Vector3(0, 1, 0), player.translation + Vector3(0, 1, 0))
 	get_parent().add_child(projectile)
 	projectileCooldown = PROJECTILE_COOLDOWN_TIME
 
@@ -55,3 +66,4 @@ func updateShieldColor():
 	#	$MeshInstance.get_surface_material(0).albedo_color = Color(0, 0, 1, 0.5)
 	#if(self.is_in_group("FireElemental")):
 	#	$MeshInstance.get_surface_material(0).albedo_color = Color(1, 0, 0, 0.5)
+	pass
