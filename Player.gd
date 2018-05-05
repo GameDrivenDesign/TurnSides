@@ -4,6 +4,7 @@ signal souls_changed()
 signal hp_changed()
 signal im_dead(deadObject)
 signal turned_side()
+signal player_dead()
 
 var speed = 600
 const FIRE = 1
@@ -72,7 +73,6 @@ func takeDamage(damage):
 		#TODO game over screen
 		emit_signal("im_dead", self)
 		emit_signal("player_dead")
-		print("the player died") #just for check at the moment
 	
 func emit_turn_particles():
 	var particles = preload("res://turn_particles.tscn").instance()
