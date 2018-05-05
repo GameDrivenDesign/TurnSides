@@ -2,7 +2,7 @@ extends KinematicBody
 
 signal im_dead(deadObject)
 
-const WEAPON_COOLDOWN_TIME = 300
+const WEAPON_COOLDOWN_TIME = 0.6
 
 var minRand
 var maxRand
@@ -16,7 +16,7 @@ var strength = 10
 var speed = 3
 var hp = 100
 var attackRange = 10
-var player = false
+var player = null
 
 var proximitySphere
 
@@ -39,6 +39,7 @@ func _ready():
 	add_child(proximitySphere)
 	set_process(true)
 	
+<<<<<<< HEAD
 func setRandomPassiveTarget():
 	var posX
 	var posZ
@@ -47,8 +48,15 @@ func setRandomPassiveTarget():
 	groupSeed = rand_seed(groupSeed)[1]
 	posZ = (groupSeed % int(maxRand.y - minRand.y)) + minRand.y
 	passiveTarget = Vector3(posX, self.translation.y, posZ)
+=======
+	for body in proximitySphere.get_overlapping_bodies():
+		handleProximityAlert(body)
+>>>>>>> 78e7137c9ce739cc458c60f800029ffa0f8c970b
 	
 func isHostileTowards(node):
+	pass
+
+func my_group_name():
 	pass
 
 func _process(delta):
@@ -76,10 +84,10 @@ func walkToTarget(delta):
 		
 func attackTarget(delta):
 	if weapon_cooldown <= 0:
-		print("HIT EM")
 		var projectile = preload("res://Projectile.tscn").instance()
-		projectile.translation = translation
-		#projectile.add_collision_exception_with(self)
+		projectile.shoot_at(translation + Vector3(0, 1, 0),
+			enemyList[0].translation + Vector3(0, 1, 0),
+			my_group_name())
 		get_parent().add_child(projectile)
 		weapon_cooldown = WEAPON_COOLDOWN_TIME
 
@@ -112,8 +120,8 @@ func removeFromEnemies(elemental):
 
 func unregisterElemental(elemental):
 	if(elemental.is_in_group("player")):
-		player.disconnect("turned_side", self, "playerChangedSide")
-		player = false
+		elemental.disconnect("turned_side", self, "playerChangedSide")
+		player = null
 	removeFromEnemies(elemental)
 		
 func playerChangedSide():

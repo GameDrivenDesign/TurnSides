@@ -13,6 +13,7 @@ func _ready():
 	
 	$Player.connect("souls_changed", hud, "update_for_player", [$Player])
 	$Player.connect("hp_changed", hud, "update_for_player", [$Player])
+	hud.update_for_player($Player)
 	$Player/Camera.look_at_from_position(Vector3(5, 50, 30), $Player.translation, Vector3(0, 1, 0))
 
 func spawnFire(offset, groupSeed):

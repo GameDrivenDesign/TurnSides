@@ -13,6 +13,7 @@ const FIRE_GROUP = "FireElemental"
 const WATER_GROUP = "WaterElemental"
 var current_element = "water"
 var hp
+var power = 0
 var elemental_souls_counter = [10, 10]
 const switch_costs_souls = 5 #change for editing the soul costs when switching
 
@@ -24,6 +25,7 @@ func _ready():
 	update_elemental_color()
 	emit_signal("souls_changed")
 	emit_signal("hp_changed")
+	add_to_group(WATER_GROUP)
 
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
