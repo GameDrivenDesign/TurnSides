@@ -2,9 +2,9 @@
 
 [sub_resource type="SphereShape" id=1]
 
-radius = 10.0
+radius = 15.0
 
-[node name="ElementalProximitySphere" type="Area"]
+[node name="ElementalProximitySphere" type="Area" index="0"]
 
 input_ray_pickable = false
 input_capture_on_drag = false

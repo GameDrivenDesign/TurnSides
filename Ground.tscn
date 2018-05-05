@@ -1,4 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/ground.png" type="Texture" id=1]
+[ext_resource path="res://rocks/rock1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://rocks/rock2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://rocks/rock3.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -29,7 +34,8 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 0.421875, 0.421875, 0.421875, 1 )
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -46,7 +52,7 @@ subsurf_scatter_enabled = false
 transmission_enabled = false
 refraction_enabled = false
 detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
+uv1_scale = Vector3( 10, 10, 10 )
 uv1_offset = Vector3( 0, 0, 0 )
 uv1_triplanar = false
 uv1_triplanar_sharpness = 1.0
@@ -56,7 +62,7 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Albedo" ]
+_sections_unfolded = [ "Albedo", "UV1" ]
 
 [sub_resource type="BoxShape" id=3]
 
@@ -94,5 +100,67 @@ _sections_unfolded = [ "Geometry", "material" ]
 
 shape = SubResource( 3 )
 disabled = false
+
+[node name="rocks" type="Spatial" parent="." index="2"]
+
+[node name="rock1" type="StaticBody" parent="rocks" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97006, -0.552042, -4.95186 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="rock7" parent="rocks" index="1" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2266, -0.552042, 15.7695 )
+
+[node name="rock5" type="StaticBody" parent="rocks" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, -8.90044, 0.0410967, 32.2509 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="rock6" parent="rocks" index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, 37.2993, 0.0410967, 4.54067 )
+
+[node name="rock4" type="StaticBody" parent="rocks" index="4" instance=ExtResource( 4 )]
+
+transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, -26.2222, -0.433004, -39.4947 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="rock2" parent="rocks" index="5" instance=ExtResource( 2 )]
+
+transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, 8.834, -0.552042, -27.9394 )
+
+[node name="rock3" type="StaticBody" parent="rocks" index="6" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9358, -0.192381, -30.4764 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
 
 
