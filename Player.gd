@@ -1,6 +1,7 @@
 extends KinematicBody
 
 signal souls_changed()
+signal im_dead(deadObject)
 
 var speed = 600
 const FIRE = 1
@@ -52,13 +53,14 @@ func update_elemental_color():
 	emit_signal("souls_changed")
 	emit_turn_particles()
 
-func take_damage(damage):
+func takeDamage(damage):
 	hp -= damage
 	if hp <= 0:
 		#TODO game over screen
+		emit_signal("im_dead", self)
 		emit_signal("player_dead")
 		print("the player died") #just for check at the moment
-
+	
 func emit_turn_particles():
 	var particles = preload("res://turn_particles.tscn").instance()
 	add_child(particles)
