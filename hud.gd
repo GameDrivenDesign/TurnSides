@@ -9,6 +9,7 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	$GameOverScreen.hide() #to hide the screen when the game starts
+	$BossHeathBar.hide()
 	pass
 
 func set_elemental_counts(fire, water, power, hp, maxHp):
@@ -23,6 +24,7 @@ func update_for_player(player):
 		set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0], player.power, player.hp, player.MAX_HP)
 	
 func showGameOverScreen():
+	$BossHeathBar.hide()
 	$HealthBar.hide()
 	$GameOverScreen.show()
 	game_is_over = true
@@ -37,4 +39,12 @@ func updateHealthBar(hp, maxHp):
 	var y = get_viewport().size.y
 	$HealthBar.set_position(Vector2(x * 0.05, y * 0.05))
 	$HealthBar.set_size(Vector2(x * 0.45 * hp / maxHp, y))
+
+func updateBossHealthBar(boss):
+	var x = get_viewport().size.x
+	var y = get_viewport().size.y
+	$HealthBar.set_position(Vector2(x * 0.05, y * 0.05))
+	$HealthBar.set_size(Vector2(x * 0.45 * boss.hp / boss.maxHp, y))
 	
+func showBossHealthBar():
+	$BossHeathBar.show()
