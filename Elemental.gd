@@ -4,6 +4,10 @@ signal im_dead(deadObject)
 
 const WEAPON_COOLDOWN_TIME = 300
 
+var minRand
+var maxRand
+var groupSeed
+
 var weapon_cooldown = 0
 var passiveTarget
 var enemyList = []
@@ -21,13 +25,28 @@ enum elementalState{
 	aggressive
 }
 
+func init(mapTopLeftCorner, mapBottomRightCorner, assignedSeed):
+	minRand = Vector2(mapTopLeftCorner.x, mapTopLeftCorner.y)
+	maxRand = Vector2(mapBottomRightCorner.x, mapBottomRightCorner.y)
+	groupSeed = assignedSeed
+	
 func _ready():
+	setRandomPassiveTarget()
 	state = elementalState.passive
 	proximitySphere = preload("res://ElementalProximitySphere.tscn").instance()
 	proximitySphere.connect("body_entered", self, "handleProximityAlert")
 	proximitySphere.connect("body_exited", self, "unregisterElemental")
 	add_child(proximitySphere)
 	set_process(true)
+	
+func setRandomPassiveTarget():
+	var posX
+	var posZ
+	groupSeed = rand_seed(groupSeed)[1]
+	posX = (groupSeed % int(maxRand.x - minRand.x)) + minRand.x
+	groupSeed = rand_seed(groupSeed)[1]
+	posZ = (groupSeed % int(maxRand.y - minRand.y)) + minRand.y
+	passiveTarget = Vector3(posX, self.translation.y, posZ)
 	
 func isHostileTowards(node):
 	pass
@@ -46,16 +65,16 @@ func walkToTarget(delta):
 		if(player):
 			direction = player.translation - translation
 		else:
-			direction = passiveTarget.translation - translation
+			direction = passiveTarget - translation
 	if(state == elementalState.aggressive):
 		direction = enemyList[0].translation - translation
 	if(direction.length() > attackRange/2):
 		translation = translation + direction.normalized() * speed * delta
+	else:
+		if(state == elementalState.passive):
+			setRandomPassiveTarget()
 		
 func attackTarget(delta):
-	#var direction = enemyList[0].translation - translation
-	#if(direction.length() <= attackRange):
-	#	enemyList[0].takeDamage(strength * delta)
 	if weapon_cooldown <= 0:
 		print("HIT EM")
 		var projectile = preload("res://Projectile.tscn").instance()
@@ -72,9 +91,6 @@ func takeDamage(dmg):
 func die():
 	emit_signal("im_dead", self)
 	queue_free()
-
-func init(tar):
-	passiveTarget = tar
 	
 func handleProximityAlert(intruder):
 	if(intruder.is_in_group("player")):
