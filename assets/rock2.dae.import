@@ -2,25 +2,25 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/fire_elemental.dae-ac7e248a4b56f2e78a64fa9d9610bef1.scn"
+path="res://.import/rock2.dae-5b8b54ebdb3b1e7b6e3000f72567470c.scn"
 
 [deps]
 
-source_file="res://assets/fire_elemental.dae"
-source_md5="cf676a7f47ade2779cc21c9b7ec58875"
+source_file="res://assets/rock2.dae"
+source_md5="ac260a476365190e3fc1471259824568"
 
-dest_files=[ "res://.import/fire_elemental.dae-ac7e248a4b56f2e78a64fa9d9610bef1.scn" ]
-dest_md5="e3e1cb9bc482031a15c3f438222da4e3"
+dest_files=[ "res://.import/rock2.dae-5b8b54ebdb3b1e7b6e3000f72567470c.scn" ]
+dest_md5="fb42145be7dbc8bfd271e690bd3ba365"
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="Scene Root"
+nodes/root_type="StaticBody"
+nodes/root_name="rock2"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
 materials/location=1
-materials/storage=0
+materials/storage=1
 materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
