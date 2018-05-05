@@ -6,7 +6,7 @@
 [ext_resource path="res://Ground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Boss.tscn" type="PackedScene" id=5]
 
-[node name="Game" type="Spatial" index="0"]
+[node name="Game" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -41,6 +41,11 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="hud" parent="Player/Camera/CanvasLayer" index="0" instance=ExtResource( 3 )]
+
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
 
 [node name="Ground" parent="." index="1" instance=ExtResource( 4 )]
 

@@ -19,6 +19,7 @@ func _ready():
 	$Player.connect("start_endphase", hud, "showBossHealthBar")
 	#TODO maybe wrong, try $Boss
 	boss.connect("boss_hp_changed", hud, "updateBossHealthBar", [boss])
+	boss.connect("victory", hud, "showVictoryScreen")
 	hud.update_for_player($Player)
 	$Player/Camera.look_at_from_position(Vector3(5, 50, 30), $Player.translation, Vector3(0, 1, 0))
 	
