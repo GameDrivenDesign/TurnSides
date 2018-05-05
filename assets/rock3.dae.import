@@ -7,7 +7,7 @@ path="res://.import/rock3.dae-b949cb1ff6392d9ba688239c3867188a.scn"
 [deps]
 
 source_file="res://assets/rock3.dae"
-source_md5="dbebc20d902c5cf466f98881428fc9de"
+source_md5="83095723b5f32f71fd9dec54d3408d02"
 
 dest_files=[ "res://.import/rock3.dae-b949cb1ff6392d9ba688239c3867188a.scn" ]
 dest_md5="17b1ac437b5bd8f868d0d3a4552d54dc"
