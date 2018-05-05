@@ -43,7 +43,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Ground" parent="." index="1" instance=ExtResource( 4 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00439453, -0.00378418, -0.0065918 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160511, -0.792959, 0.318624 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="2"]
@@ -76,7 +76,7 @@ _sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
 
 [node name="FireSpawn" type="Position3D" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0229, 0, 21.9985 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16205, 0, 9.16162 )
 
 [node name="WaterSpawn" type="Position3D" parent="." index="4"]
 

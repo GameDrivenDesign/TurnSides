@@ -62,7 +62,7 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = -279.0
+margin_left = -240.0
 margin_bottom = 149.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -95,31 +95,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="power_count" type="Label" parent="elemental_stats" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 171.0
-margin_top = 111.0
-margin_right = 211.0
-margin_bottom = 141.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
-text = "10"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="water_count" type="Label" parent="elemental_stats" index="2"]
+[node name="water_count" type="Label" parent="elemental_stats" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -143,37 +119,18 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="power_icon" type="ColorRect" parent="elemental_stats" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 172.0
-margin_top = 56.0
-margin_right = 212.0
-margin_bottom = 96.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
-
-[node name="fire_icon" type="Sprite" parent="elemental_stats" index="4"]
+[node name="fire_icon" type="Sprite" parent="elemental_stats" index="2"]
 
 position = Vector2( 111.402, 70.8753 )
 texture = ExtResource( 2 )
 
-[node name="water_icon" type="Sprite" parent="elemental_stats" index="5"]
+[node name="water_icon" type="Sprite" parent="elemental_stats" index="3"]
 
 position = Vector2( 26.565, 76.3501 )
 texture = ExtResource( 3 )
 
 [node name="GameOverScreen" type="ColorRect" parent="." index="1"]
 
-visible = false
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -225,6 +182,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.925781, 0.111683, 0.00361633, 1 )
-_sections_unfolded = [ "Focus", "Mouse", "Rect", "Size Flags" ]
+_sections_unfolded = [ "Focus", "Margin", "Mouse", "Rect", "Size Flags" ]
 
 
