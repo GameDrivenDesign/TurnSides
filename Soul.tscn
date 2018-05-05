@@ -124,7 +124,7 @@ _sections_unfolded = [ "Albedo", "Flags", "Parameters", "Vertex Color" ]
 material = SubResource( 6 )
 size = Vector2( 1, 1 )
 
-[node name="Soul" type="Spatial" index="0"]
+[node name="Soul" type="Spatial"]
 
 script = ExtResource( 1 )
 

@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ground.png" type="Texture" id=1]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -29,7 +31,8 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 0.421875, 0.421875, 0.421875, 1 )
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -46,7 +49,7 @@ subsurf_scatter_enabled = false
 transmission_enabled = false
 refraction_enabled = false
 detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
+uv1_scale = Vector3( 10, 10, 10 )
 uv1_offset = Vector3( 0, 0, 0 )
 uv1_triplanar = false
 uv1_triplanar_sharpness = 1.0
@@ -56,13 +59,13 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Albedo" ]
+_sections_unfolded = [ "Albedo", "UV1" ]
 
 [sub_resource type="BoxShape" id=3]
 
 extents = Vector3( 64, 0.1, 64 )
 
-[node name="Ground" type="StaticBody"]
+[node name="Ground" type="StaticBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
