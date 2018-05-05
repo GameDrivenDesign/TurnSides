@@ -10,11 +10,13 @@ func _ready():
 	hide() #to hide the screen when the game starts
 	pass
 
-func set_elemental_counts(fire, water):
+func set_elemental_counts(fire, water, hp):
 	$elemental_stats/water_count.text = str(water)
 	$elemental_stats/fire_count.text = str(fire)
+	$elemental_stats/hp.text = str(hp)
 
 func update_for_player(player):
+<<<<<<< HEAD
 	set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0])
 	
 func showGameOverScreen(score):
@@ -24,3 +26,6 @@ func showGameOverScreen(score):
 	set_rect(Vector2(x * 0.05, y * 0.05))
 	rect_size(Vector2(x * 0.9, y * 0.9))
 	
+=======
+	set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0], player.hp)
+>>>>>>> 29331011f594cc6f1abf85689ca41f6f37250376

@@ -15,6 +15,9 @@ func isHostileTowards(node):
 	else:
 		return false
 
+func my_group_name():
+	return "WaterElemental"
+
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
