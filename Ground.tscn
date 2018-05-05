@@ -68,7 +68,7 @@ _sections_unfolded = [ "Albedo", "UV1" ]
 
 extents = Vector3( 64, 0.1, 64 )
 
-[node name="Ground" type="StaticBody"]
+[node name="Ground" type="StaticBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -103,64 +103,46 @@ disabled = false
 
 [node name="rocks" type="Spatial" parent="." index="2"]
 
-[node name="rock1" type="StaticBody" parent="rocks" index="0" instance=ExtResource( 2 )]
+[node name="rock1" parent="rocks" index="0" groups=[
+"Rock",
+] instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97006, -0.552042, -4.95186 )
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
 
-[node name="rock7" parent="rocks" index="1" instance=ExtResource( 2 )]
+[node name="rock7" parent="rocks" index="1" groups=[
+"Rock",
+] instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2266, -0.552042, 15.7695 )
 
-[node name="rock5" type="StaticBody" parent="rocks" index="2" instance=ExtResource( 3 )]
+[node name="rock5" parent="rocks" index="2" groups=[
+"Rock",
+] instance=ExtResource( 3 )]
 
 transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, -8.90044, 0.0410967, 32.2509 )
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
 
-[node name="rock6" parent="rocks" index="3" instance=ExtResource( 3 )]
+[node name="rock6" parent="rocks" index="3" groups=[
+"Rock",
+] instance=ExtResource( 3 )]
 
 transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, 37.2993, 0.0410967, 4.54067 )
 
-[node name="rock4" type="StaticBody" parent="rocks" index="4" instance=ExtResource( 4 )]
+[node name="rock4" parent="rocks" index="4" groups=[
+"Rock",
+] instance=ExtResource( 4 )]
 
 transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, -26.2222, -0.433004, -39.4947 )
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
 
-[node name="rock2" parent="rocks" index="5" instance=ExtResource( 2 )]
+[node name="rock2" parent="rocks" index="5" groups=[
+"Rock",
+] instance=ExtResource( 2 )]
 
 transform = Transform( 0.527675, 0, 0.849446, 0, 1, 0, -0.849446, 0, 0.527675, 8.834, -0.552042, -27.9394 )
 
-[node name="rock3" type="StaticBody" parent="rocks" index="6" instance=ExtResource( 4 )]
+[node name="rock3" parent="rocks" index="6" groups=[
+"Rock",
+] instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9358, -0.192381, -30.4764 )
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
 
 

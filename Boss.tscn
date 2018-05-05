@@ -68,7 +68,7 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[node name="KinematicBody" type="KinematicBody" index="0" groups=[
+[node name="KinematicBody" type="KinematicBody" groups=[
 "BigBoss",
 ]]
 
@@ -93,7 +93,8 @@ disabled = false
 
 [node name="SceneRoot" parent="." index="1" instance=ExtResource( 2 )]
 
-_sections_unfolded = [ "Visibility" ]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="BossShield" type="MeshInstance" parent="." index="2"]
 

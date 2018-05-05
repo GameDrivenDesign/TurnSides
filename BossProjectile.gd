@@ -25,3 +25,5 @@ func _on_Projectile_body_entered(body):
 			penetrationPower -= 1
 	if(penetrationPower <= 0):
 		queue_free()
+	if(body.is_in_group("Rock")):
+		queue_free()
