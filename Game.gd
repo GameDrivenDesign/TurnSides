@@ -1,6 +1,6 @@
 extends Spatial
 
-const MAX_COLLECT_SOUL_DISTANCE = 80
+const MAX_COLLECT_SOUL_DISTANCE = 30
 const MAP_TOP_LEFT_CORNER = Vector2(-20,-20)
 const MAP_BOTTOM_RIGHT_CORNER = Vector2(20,20)
 
@@ -14,13 +14,15 @@ func _ready():
 	$Player.connect("player_dead", hud, "showGameOverScreen")
 	hud.update_for_player($Player)
 	$Player/Camera.look_at_from_position(Vector3(5, 50, 30), $Player.translation, Vector3(0, 1, 0))
+	
+	spawn_wave()
 
 func spawnFire(offset, groupSeed):
 	var fire = preload("res://FireElemental.tscn").instance()
 	fire.init(MAP_TOP_LEFT_CORNER, MAP_BOTTOM_RIGHT_CORNER, groupSeed)
 	fire.translation = $FireSpawn.translation + offset
 	fire.passiveTarget = $FireTarget
-	fire.connect("imdead", self, "checkCollectSoul", [fire])
+	fire.connect("im_dead", self, "checkCollectSoul")
 	add_child(fire)
 
 func spawnWater(offset, groupSeed):
@@ -28,7 +30,7 @@ func spawnWater(offset, groupSeed):
 	water.init(MAP_TOP_LEFT_CORNER, MAP_BOTTOM_RIGHT_CORNER, groupSeed)
 	water.translation = $WaterSpawn.translation + offset
 	water.passiveTarget = $WaterTarget
-	water.connect("imdead", self, "checkCollectSoul", [water])
+	water.connect("im_dead", self, "checkCollectSoul")
 	add_child(water)
 
 func checkCollectSoul(elemental):
@@ -36,6 +38,7 @@ func checkCollectSoul(elemental):
 	if elemental.translation.distance_to($Player.translation) <= MAX_COLLECT_SOUL_DISTANCE:
 		soul.target = $Player
 	soul.translation = elemental.translation
+	soul.type = elemental.my_element_name()
 	add_child(soul)
 
 func _on_SpawnTimer_timeout():

@@ -1,17 +1,19 @@
 extends Spatial
 
 var target
-const SPEED = 5
+var type
+const SPEED = 1
+const RAISE_SPEED = 100
 
 func _physics_process(delta):
 	if not target:
-		translation += Vector3(0, SPEED  * delta, 0)
+		translation += Vector3(0, RAISE_SPEED  * delta, 0)
 		if translation.y > 200:
 			queue_free()
 	
 	if target:
-		if translation.distance_to(target.translation):
-			target.soul_collected()
+		if translation.distance_to(target.translation) < 1:
+			target.collect_soul(type)
 			queue_free()
 		else:
-			translation = lerp(translation, target.translation, delta * SPEED)
+			translation = translation.linear_interpolate(target.translation, delta * SPEED)

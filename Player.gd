@@ -72,6 +72,13 @@ func update_elemental_color():
 	emit_signal("souls_changed")
 	emit_turn_particles()
 
+func collect_soul(type):
+	if type == 'fire':
+		elemental_souls_counter[FIRE] += 1
+	else:
+		elemental_souls_counter[WATER] += 1
+	power += 1
+
 func takeDamage(damage):
 	if not shield_is_active:
 		hp -= damage
