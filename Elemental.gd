@@ -12,7 +12,7 @@ var strength = 10
 var speed = 3
 var hp = 100
 var attackRange = 10
-var player = false
+var player = null
 
 var proximitySphere
 
@@ -28,6 +28,9 @@ func _ready():
 	proximitySphere.connect("body_exited", self, "unregisterElemental")
 	add_child(proximitySphere)
 	set_process(true)
+	
+	for body in proximitySphere.get_overlapping_bodies():
+		handleProximityAlert(body)
 	
 func isHostileTowards(node):
 	pass
@@ -56,9 +59,6 @@ func walkToTarget(delta):
 		translation = translation + direction.normalized() * speed * delta
 		
 func attackTarget(delta):
-	#var direction = enemyList[0].translation - translation
-	#if(direction.length() <= attackRange):
-	#	enemyList[0].takeDamage(strength * delta)
 	if weapon_cooldown <= 0:
 		var projectile = preload("res://Projectile.tscn").instance()
 		projectile.shoot_at(translation + Vector3(0, 1, 0),
@@ -99,8 +99,8 @@ func removeFromEnemies(elemental):
 
 func unregisterElemental(elemental):
 	if(elemental.is_in_group("player")):
-		player.disconnect("turned_side", self, "playerChangedSide")
-		player = false
+		elemental.disconnect("turned_side", self, "playerChangedSide")
+		player = null
 	removeFromEnemies(elemental)
 		
 func playerChangedSide():
