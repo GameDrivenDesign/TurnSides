@@ -4,9 +4,9 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Ground.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/boss.dae" type="PackedScene" id=5]
+[ext_resource path="res://Boss.tscn" type="PackedScene" id=5]
 
-[node name="Game" type="Spatial" index="0"]
+[node name="Game" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -102,8 +102,7 @@ autostart = true
 
 [node name="boss" parent="." index="8" instance=ExtResource( 5 )]
 
-transform = Transform( 0.931397, 0, -1.1758, 0, 1.5, 0, 1.1758, 0, 0.931397, 31.3439, -1.12858, -21.5064 )
-_sections_unfolded = [ "Transform" ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1350, 2864, 2583.98 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 

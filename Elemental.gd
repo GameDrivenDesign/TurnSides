@@ -78,7 +78,7 @@ func walkToTarget(delta):
 	if(state == elementalState.aggressive):
 		direction = enemyList[0].translation - translation
 	if(direction.length() > attackRange/4):
-		translation = translation + direction.normalized() * speed * delta
+		move_and_collide(direction.normalized() * speed * delta)
 	else:
 		if(state == elementalState.passive):
 			setRandomPassiveTarget()
@@ -105,7 +105,7 @@ func handleProximityAlert(intruder):
 	if(intruder.is_in_group("player")):
 		player = intruder
 		player.connect("turned_side", self, "playerChangedSide")
-	if(isHostileTowards(intruder)):
+	if(isHostileTowards(intruder) and not intruder.is_in_group("BigBoss")):
 		intruder.connect("im_dead", self, "unregisterElemental")
 		enemyList.append(intruder)
 		if(state == elementalState.passive):
