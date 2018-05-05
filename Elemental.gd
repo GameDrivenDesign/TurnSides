@@ -31,13 +31,13 @@ func init(mapTopLeftCorner, mapBottomRightCorner, assignedSeed):
 	groupSeed = assignedSeed
 	
 func _ready():
-	setRandomPassiveTarget()
 	state = elementalState.passive
 	proximitySphere = preload("res://ElementalProximitySphere.tscn").instance()
 	proximitySphere.connect("body_entered", self, "handleProximityAlert")
 	proximitySphere.connect("body_exited", self, "unregisterElemental")
 	add_child(proximitySphere)
 	set_process(true)
+	setRandomPassiveTarget()
 	
 func setRandomPassiveTarget():
 	var posX
