@@ -3,6 +3,7 @@ extends Container
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+var game_is_over = false
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -18,12 +19,13 @@ func set_elemental_counts(fire, water, power, hp, maxHp):
 	#$elemental_stats/power_count.text = str(power)
 
 func update_for_player(player):
-	print(player)
-	set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0], player.power, player.hp, player.MAX_HP)
+	if not game_is_over:
+		set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0], player.power, player.hp, player.MAX_HP)
 	
 func showGameOverScreen():
 	$HealthBar.hide()
 	$GameOverScreen.show()
+	game_is_over = true
 	var x = get_viewport().size.x
 	var y = get_viewport().size.y
 	$GameOverScreen.set_position(Vector2(x * 0.05, y * 0.05))
