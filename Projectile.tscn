@@ -161,7 +161,7 @@ disabled = false
 
 [node name="Particles" type="Particles" parent="." index="1"]
 
-transform = Transform( -2, 0, -7.78829e-07, 0, 2, 0, 7.78829e-07, 0, -2, 0, 0, 0 )
+transform = Transform( 2, 0, 9.53674e-07, 0, 2, 0, -9.53674e-07, 0, 2, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
