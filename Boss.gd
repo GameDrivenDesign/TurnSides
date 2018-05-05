@@ -4,8 +4,8 @@ extends KinematicBody
 signal victory()
 signal boss_hp_changed()
 
-const PROJECTILE_COOLDOWN_TIME = 5
-const SWITCH_SHIELD_COOLDOWN_TIME = 15
+const PROJECTILE_COOLDOWN_TIME = 4
+const SWITCH_SHIELD_COOLDOWN_TIME = 10
 const MAX_HP = 200
 
 var hp = MAX_HP

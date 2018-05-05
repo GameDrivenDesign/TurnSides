@@ -11,6 +11,10 @@ func _ready():
 	$GameOverScreen.hide() #to hide the screen when the game starts
 	$BossHealthBar.hide()
 	$VictoryScreen.hide()
+	var x = get_viewport().size.x
+	var y = get_viewport().size.y
+	$BossHealthBar.set_position(Vector2(x * 0.5, y * 0.05))
+	$BossHealthBar.set_size(Vector2(x * 0.45, y))
 
 func set_elemental_counts(fire, water, power, hp, maxHp):
 	$elemental_stats/water_count.text = str(water)
@@ -53,7 +57,7 @@ func updateHealthBar(hp, maxHp):
 func updateBossHealthBar(boss):
 	var x = get_viewport().size.x
 	var y = get_viewport().size.y
-	$BossHealthBar.set_position(Vector2(x * 0.05, y * 0.05))
+	$BossHealthBar.set_position(Vector2(x * 0.5, y * 0.05))
 	$BossHealthBar.set_size(Vector2(x * 0.45 * boss.hp / boss.MAX_HP, y))
 	
 func showBossHealthBar():
