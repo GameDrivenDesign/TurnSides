@@ -7,13 +7,13 @@ extends Container
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	hide() #to hide the screen when the game starts
+	$GameOverScreen.hide() #to hide the screen when the game starts
 	pass
 
 func set_elemental_counts(fire, water, hp):
 	$elemental_stats/water_count.text = str(water)
 	$elemental_stats/fire_count.text = str(fire)
-	$elemental_stats/hp.text = str(hp)
+	#$elemental_stats/hp.text = str(hp)
 
 func update_for_player(player):
 	set_elemental_counts(player.elemental_souls_counter[1], player.elemental_souls_counter[0], player.hp)

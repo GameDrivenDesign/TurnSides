@@ -2,7 +2,7 @@ extends KinematicBody
 
 signal im_dead(deadObject)
 
-const WEAPON_COOLDOWN_TIME = 300
+const WEAPON_COOLDOWN_TIME = 0.6
 
 var weapon_cooldown = 0
 var passiveTarget
