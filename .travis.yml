@@ -5,7 +5,7 @@ env:
   # Use this to set your game's name. It is being used
   # throughout this file for naming exported artifacts.
   # This will, for example, create an "Awesome Game.exe"
-  - GAME_NAME="Totally Terrifying Turns"
+  - GAME_NAME="TurnSides"
 
 install:
 - docker pull gamedrivendesign/godot-export
